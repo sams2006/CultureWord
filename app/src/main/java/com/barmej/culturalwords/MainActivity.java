@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // الصلاحية ممنوحه مسبقا لذلك يمكننا مشاركة الصورة
 
-            shareImage(R.drawable.gift, "", "");
+            shareImage(/*R.drawable.gift*/, "", "");
         }
     }
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // تم منح الصلاحية من قبل المستخدم لذلك يمكننا مشاركة الصورة الآن
-                shareImage(R.drawable.gift, "", "");
+                shareImage(/*R.drawable.gift*/, "", "");
 
             } else {
                 // لم يتم منح الصلاحية من المستخدم لذلك لن نقوم بمشاركة الصورة، طبعا يمكننا تنبيه المستخدم بأنه لن يتم مشاركة الصورة لسبب عدم منح الصلاحية للتطبيق
