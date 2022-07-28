@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -139,5 +140,34 @@ public class MainActivity extends AppCompatActivity {
         Intent intentAnswer = new Intent(this , AnswerActivity.class);
         intentAnswer.putExtra("open_answer" ,arrayAnswer[getRandomQuestion] + " " + ": " +  arrayAnswerDetails[getRandomQuestion]);
         startActivity(intentAnswer);
+    }
+
+    public void showLanguageDialog(View view){
+
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("تغيير اللغة")
+                .setItems(R.array.languages, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        String language = "ar" ;
+                        switch (which) {
+                            case 0 :
+                                language = "ar" ;
+                                break;
+                            case 1 :
+                                language = "en" ;
+                                break;
+                        }
+                          LocaleHelper.setLocale(MainActivity.this , language) ;
+                        Intent intent = new Intent(getApplicationContext() , MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) ;
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;
+                        startActivity(intent);
+
+                    }
+                }) .create() ;
+        alertDialog.show();
     }
 }
