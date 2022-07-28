@@ -1,0 +1,45 @@
+<resources>
+
+    <string name="app_name">traditional words</string>
+    <string name="share_the_question_with_friends">Ask a friend</string>
+    <string name="share_question_text">share</string>
+    <string name="share_title_hint">Add a title</string>
+    <string name="the_right_answer_is">The answer is</string>
+    <string name="back_text">back</string>
+    <string name="permission_title">Clarification</string>
+    <string name="permission_explanation">The application needs to obtain write permission to the external storage to store the image in preparation for sharing it through other applications</string>
+    <string name="permission_denied">The operation was not executed because the necessary permissions to perform it were not granted</string>
+
+    <string-array name="answers">
+        <item>the agal</item>
+        <item>the faroah</item>
+        <item>the sadoo</item>
+        <item>al henna</item>
+        <item>al dalla</item>
+        <item>al khuf</item>
+        <item>al khanjar</item>
+        <item>al namraqa</item>
+        <item>al siraj</item>
+        <item>al fannos</item>
+        <item>al tarboosh</item>
+        <item>al emammah</item>
+        <item>al dishdasha</item>
+    </string-array>
+
+    <string-array name="answer_description">
+        <item>It is placed over the station or ghutra to fix it</item>
+        <item>مبطنة بالصوف، تلبس في الشتاء للوقاية من البرد</item>
+        <item>Fleece lined, worn in winter to prevent cold</item>
+        <item>It is used to dye hair and beard, and it is also used to beautify hands for women</item>
+        <item>The bowl used for serving coffee among Arabs</item>
+        <item>Made of leather, worn on the foot, it was famous in the old days of the Arabs</item>
+        <item>Small white weapon placed on the waist</item>
+        <item>Small pillow to recline on</item>
+        <item>The name of the instrument that was used for lighting in the past</item>
+        <item>A tool used for lighting and decoration</item>
+        <item>A red hat was popular in the Levant, Egypt and Morocco</item>
+        <item>Roll-over cap</item>
+        <item>An Arab dress that is widely worn in the Gulf countriesgit branch</item>
+    </string-array>
+
+</resources>
