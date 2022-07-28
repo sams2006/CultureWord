@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,14 +14,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
+    ImageView imageViewQuestions ;
+    int[] arrayImageQuestions = {
+            R.drawable.icon_1 ,
+            R.drawable.icon_2 ,
+            R.drawable.icon_3 ,
+            R.drawable.icon_4 ,
+            R.drawable.icon_5 ,
+            R.drawable.icon_6 ,
+            R.drawable.icon_7 ,
+            R.drawable.icon_8 ,
+            R.drawable.icon_9 ,
+            R.drawable.icon_10 ,
+            R.drawable.icon_11 ,
+            R.drawable.icon_12 ,
+            R.drawable.icon_13 ,
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageViewQuestions = findViewById(R.id.image_view_question);
     }
 
     /**
@@ -95,4 +118,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void changeQuestionButton(View view) {
+
+        Random randomQuestion = new Random() ;
+        int getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
+        imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
+    }
 }
