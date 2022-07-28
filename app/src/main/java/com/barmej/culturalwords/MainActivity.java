@@ -2,6 +2,7 @@ package com.barmej.culturalwords;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
     ImageView imageViewQuestions ;
+    int getRandomQuestion ;
+
     int[] arrayImageQuestions = {
             R.drawable.icon_1 ,
             R.drawable.icon_2 ,
@@ -37,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    String[] arrayAnswer ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         imageViewQuestions = findViewById(R.id.image_view_question);
+        arrayAnswer = getResources().getStringArray(R.array.answers);
     }
 
     /**
@@ -121,7 +128,13 @@ public class MainActivity extends AppCompatActivity {
     public void changeQuestionButton(View view) {
 
         Random randomQuestion = new Random() ;
-        int getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
+         getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
         imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
+    }
+
+    public void openAnswer(View view) {
+        Intent intentAnswer = new Intent(this , AnswerActivity.class);
+        intentAnswer.putExtra("open_answer" ,arrayAnswer[getRandomQuestion]);
+        startActivity(intentAnswer);
     }
 }
