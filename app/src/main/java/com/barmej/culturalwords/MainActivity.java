@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
     ImageView imageViewQuestions ;
     int getRandomQuestion ;
+    String[] arrayAnswer ;
+    String[] arrayAnswerDetails ;
 
     int[] arrayImageQuestions = {
             R.drawable.icon_1 ,
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
-    String[] arrayAnswer ;
+
 
 
     @Override
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageViewQuestions = findViewById(R.id.image_view_question);
         arrayAnswer = getResources().getStringArray(R.array.answers);
+        arrayAnswerDetails = getResources().getStringArray(R.array.answer_description);
     }
 
     /**
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAnswer(View view) {
         Intent intentAnswer = new Intent(this , AnswerActivity.class);
-        intentAnswer.putExtra("open_answer" ,arrayAnswer[getRandomQuestion]);
+        intentAnswer.putExtra("open_answer" ,arrayAnswer[getRandomQuestion] + " " + ": " +  arrayAnswerDetails[getRandomQuestion]);
         startActivity(intentAnswer);
     }
 }

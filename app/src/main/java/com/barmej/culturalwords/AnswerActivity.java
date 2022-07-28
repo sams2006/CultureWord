@@ -3,6 +3,7 @@ package com.barmej.culturalwords;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class AnswerActivity extends AppCompatActivity {
@@ -18,5 +19,9 @@ public class AnswerActivity extends AppCompatActivity {
         answerText = findViewById(R.id.text_view_answer) ;
         String answer = getIntent().getStringExtra("open_answer") ;
         answerText.setText(answer);
+    }
+
+    public void buttonBack(View view) {
+        finish();
     }
 }

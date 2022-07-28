@@ -49,6 +49,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="buttonBack"
         android:background="@drawable/button_brown"
         android:text="@string/back_text"
         android:textColor="@android:color/white"
