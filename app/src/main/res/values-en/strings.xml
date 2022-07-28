@@ -6,6 +6,7 @@
     <string name="share_title_hint">Add a title</string>
     <string name="the_right_answer_is">The answer is</string>
     <string name="back_text">back</string>
+    <string name="chang_language">change language</string>
     <string name="permission_title">Clarification</string>
     <string name="permission_explanation">The application needs to obtain write permission to the external storage to store the image in preparation for sharing it through other applications</string>
     <string name="permission_denied">The operation was not executed because the necessary permissions to perform it were not granted</string>
