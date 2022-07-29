@@ -23,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
     ImageView imageViewQuestions;
-    int getRandomQuestion;
+    int getRandomQuestion ;
     String[] arrayAnswer;
     String[] arrayAnswerDetails;
+
+    Random randomQuestion = new Random();
 
     int[] arrayImageQuestions = {
             R.drawable.icon_1,
@@ -59,14 +61,22 @@ public class MainActivity extends AppCompatActivity {
         imageViewQuestions = findViewById(R.id.image_view_question);
         arrayAnswer = getResources().getStringArray(R.array.answers);
         arrayAnswerDetails = getResources().getStringArray(R.array.answer_description);
+
+
+       getRandomSetImage();
     }
 
     /**
      * يجب عليك كتابة الكود الذي يقوم بمشاركة الصورة في هذه الدالة
      */
     private void shareImage() {
-        // كود مشاركة الصورة هنا
+
+        Intent intent = new Intent(MainActivity.this , ShareActivity.class);
+        intent.putExtra("share_image" , arrayImageQuestions[getRandomQuestion]) ;
+        startActivity(intent);
     }
+
+
 
     /**
      * هذه الدالة تقوم بطلب صلاحية الكتابة على ال external storage حتى يمكن حفظ ملف الصورة
@@ -136,9 +146,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeQuestionButton(View view) {
 
-        Random randomQuestion = new Random();
-        getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
-        imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
+
+       getRandomSetImage();
     }
 
     public void openAnswer(View view) {
@@ -182,5 +191,16 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("language", lang);
         editor.apply();
+    }
+
+
+    public void onShare(View view) {
+
+       shareImage();
+    }
+
+    private void getRandomSetImage() {
+        getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
+        imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
     }
 }
