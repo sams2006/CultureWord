@@ -23,12 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
     ImageView imageViewQuestions;
-    int getRandomQuestion ;
+    int getRandomQuestion;
     String[] arrayAnswer;
     String[] arrayAnswerDetails;
-
     Random randomQuestion = new Random();
-
     int[] arrayImageQuestions = {
             R.drawable.icon_1,
             R.drawable.icon_2,
@@ -43,40 +41,34 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.icon_11,
             R.drawable.icon_12,
             R.drawable.icon_13,
-
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("app_perf",MODE_PRIVATE);
-        String appLang = sharedPreferences.getString("language" , "");
-        if(! appLang.equals("")) {
-            LocaleHelper.setLocale(this , appLang) ;
+        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
+        String appLang = sharedPreferences.getString(Constatnts.LANGUAGE, "");
+        if (!appLang.equals("")) {
+            LocaleHelper.setLocale(this, appLang);
         }
+
         setContentView(R.layout.activity_main);
 
         imageViewQuestions = findViewById(R.id.image_view_question);
         arrayAnswer = getResources().getStringArray(R.array.answers);
         arrayAnswerDetails = getResources().getStringArray(R.array.answer_description);
-
-
-       getRandomSetImage();
+        getRandomSetImage();
     }
 
     /**
      * يجب عليك كتابة الكود الذي يقوم بمشاركة الصورة في هذه الدالة
      */
     private void shareImage() {
-
-        Intent intent = new Intent(MainActivity.this , ShareActivity.class);
-        intent.putExtra("share_image" , arrayImageQuestions[getRandomQuestion]) ;
+        Intent intent = new Intent(MainActivity.this, ShareActivity.class);
+        intent.putExtra(Constatnts.SHARE_IMAGE, arrayImageQuestions[getRandomQuestion]);
         startActivity(intent);
     }
-
-
 
     /**
      * هذه الدالة تقوم بطلب صلاحية الكتابة على ال external storage حتى يمكن حفظ ملف الصورة
@@ -145,20 +137,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeQuestionButton(View view) {
-
-
-       getRandomSetImage();
+        getRandomSetImage();
     }
 
     public void openAnswer(View view) {
         Intent intentAnswer = new Intent(this, AnswerActivity.class);
-        intentAnswer.putExtra("open_answer", arrayAnswer[getRandomQuestion] + " " + ": " + arrayAnswerDetails[getRandomQuestion]);
+        intentAnswer.putExtra(Constatnts.OPEN_ANSWER, arrayAnswer[getRandomQuestion] + " " + ": " + arrayAnswerDetails[getRandomQuestion]);
         startActivity(intentAnswer);
     }
 
     public void showLanguageDialog(View view) {
-
-
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.chang_language))
                 .setItems(R.array.languages, new DialogInterface.OnClickListener() {
@@ -180,23 +168,20 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
-
                     }
                 }).create();
         alertDialog.show();
     }
 
     private void saveLanguage(String lang) {
-        SharedPreferences sharedPreferences = getSharedPreferences("app_perf", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("language", lang);
+        editor.putString(Constatnts.LANGUAGE, lang);
         editor.apply();
     }
 
-
     public void onShare(View view) {
-
-       shareImage();
+        shareImage();
     }
 
     private void getRandomSetImage() {

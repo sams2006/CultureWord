@@ -20,29 +20,24 @@ import java.io.File;
 
 public class ShareActivity extends AppCompatActivity {
 
-    ImageView imageView ;
-    EditText editText ;
-    int getImage ;
-    String mTitle ;
+    ImageView imageView;
+    EditText editText;
+    int getImage;
+    String mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_share);
 
-
         imageView = findViewById(R.id.image_view_question);
-        editText = findViewById(R.id.edit_text_share_title) ;
-         getImage = getIntent().getIntExtra("share_image" , R.drawable.icon_6) ;
+        editText = findViewById(R.id.edit_text_share_title);
+        getImage = getIntent().getIntExtra(Constatnts.SHARE_IMAGE, 0);
         imageView.setImageResource(getImage);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("app_perf" , MODE_PRIVATE) ;
-        String getTitle = sharedPreferences.getString("title" , "") ;
+        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
+        String getTitle = sharedPreferences.getString(Constatnts.TITLE, "");
         editText.setText(getTitle);
-
-
     }
 
     public void share(View view) {
@@ -54,21 +49,20 @@ public class ShareActivity extends AppCompatActivity {
                 .appendPath(resources.getResourceEntryName(getImage))
                 .build();
 
-         mTitle = editText.getText().toString();
-         saveTitle();
-        Intent intentShare = new Intent() ;
-        intentShare.setAction(Intent.ACTION_SEND) ;
-        intentShare.putExtra(Intent.EXTRA_STREAM , imageUri) ;
-        intentShare.putExtra(Intent.EXTRA_TEXT , mTitle) ;
+        mTitle = editText.getText().toString();
+        saveTitle();
+        Intent intentShare = new Intent();
+        intentShare.setAction(Intent.ACTION_SEND);
+        intentShare.putExtra(Intent.EXTRA_STREAM, imageUri);
+        intentShare.putExtra(Intent.EXTRA_TEXT, mTitle);
         intentShare.setType("image/*");
-        startActivity(Intent.createChooser(intentShare , null));
-
+        startActivity(Intent.createChooser(intentShare, null));
     }
 
     private void saveTitle() {
-        SharedPreferences sharedPreferences = getSharedPreferences("app_perf", MODE_PRIVATE) ;
-        SharedPreferences.Editor editor = sharedPreferences.edit() ;
-        editor.putString("title" ,mTitle);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constatnts.TITLE, mTitle);
         editor.apply();
     }
 }

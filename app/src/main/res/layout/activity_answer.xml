@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/brownLight">
 
     <TextView
@@ -32,13 +32,13 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/rectangle_rounded_corners"
         android:gravity="center"
-        tools:text="الفروة: مبطنة بالصوف، تلبس في الشتاء للوقاية من البرد"
         android:textColor="@color/brownDark"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button_return"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="الفروة: مبطنة بالصوف، تلبس في الشتاء للوقاية من البرد" />
 
     <Button
         android:id="@+id/button_return"
@@ -49,8 +49,8 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:onClick="buttonBack"
         android:background="@drawable/button_brown"
+        android:onClick="buttonBack"
         android:text="@string/back_text"
         android:textColor="@android:color/white"
         android:textSize="20sp"

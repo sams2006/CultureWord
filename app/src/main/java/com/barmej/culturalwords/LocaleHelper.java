@@ -23,7 +23,6 @@ public class LocaleHelper {
 
         resources.updateConfiguration(configuration ,resources.getDisplayMetrics());
 
-
         return context ;
     }
 }
