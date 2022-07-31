@@ -6,17 +6,11 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import java.io.File;
 
 public class ShareActivity extends AppCompatActivity {
 
@@ -32,11 +26,11 @@ public class ShareActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.image_view_question);
         editText = findViewById(R.id.edit_text_share_title);
-        getImage = getIntent().getIntExtra(Constatnts.SHARE_IMAGE, 0);
+        getImage = getIntent().getIntExtra(Constants.SHARE_IMAGE, 0);
         imageView.setImageResource(getImage);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
-        String getTitle = sharedPreferences.getString(Constatnts.TITLE, "");
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.APP_PERF, MODE_PRIVATE);
+        String getTitle = sharedPreferences.getString(Constants.TITLE, "");
         editText.setText(getTitle);
     }
 
@@ -60,9 +54,9 @@ public class ShareActivity extends AppCompatActivity {
     }
 
     private void saveTitle() {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.APP_PERF, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Constatnts.TITLE, mTitle);
+        editor.putString(Constants.TITLE, mTitle);
         editor.apply();
     }
 }

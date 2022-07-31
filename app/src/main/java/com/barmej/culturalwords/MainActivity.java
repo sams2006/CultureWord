@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
-        String appLang = sharedPreferences.getString(Constatnts.LANGUAGE, "");
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.APP_PERF, MODE_PRIVATE);
+        String appLang = sharedPreferences.getString(Constants.LANGUAGE, "");
         if (!appLang.equals("")) {
             LocaleHelper.setLocale(this, appLang);
         }
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void shareImage() {
         Intent intent = new Intent(MainActivity.this, ShareActivity.class);
-        intent.putExtra(Constatnts.SHARE_IMAGE, arrayImageQuestions[getRandomQuestion]);
+        intent.putExtra(Constants.SHARE_IMAGE, arrayImageQuestions[getRandomQuestion]);
         startActivity(intent);
     }
 
@@ -142,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openAnswer(View view) {
         Intent intentAnswer = new Intent(this, AnswerActivity.class);
-        intentAnswer.putExtra(Constatnts.OPEN_ANSWER, arrayAnswer[getRandomQuestion] + " " + ": " + arrayAnswerDetails[getRandomQuestion]);
+        intentAnswer.putExtra(Constants.OPEN_ANSWER, arrayAnswer[getRandomQuestion] + " " + ": " + arrayAnswerDetails[getRandomQuestion]);
         startActivity(intentAnswer);
     }
 
@@ -174,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveLanguage(String lang) {
-        SharedPreferences sharedPreferences = getSharedPreferences(Constatnts.APP_PERF, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(Constants.APP_PERF, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Constatnts.LANGUAGE, lang);
+        editor.putString(Constants.LANGUAGE, lang);
         editor.apply();
     }
 
