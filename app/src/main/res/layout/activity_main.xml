@@ -66,9 +66,9 @@
         android:id="@+id/button_change_language"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/pie_left"
+        android:background="@drawable/pie_right"
         android:onClick="showLanguageDialog"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_language_white_24dp" />
 
@@ -76,10 +76,10 @@
         android:id="@+id/button_share_question"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/pie_right"
         android:onClick="onShare"
+        android:background="@drawable/pie_left"
         android:src="@drawable/ic_share_white_24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
