@@ -20,6 +20,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BUNDLE = "BUNDLE" ;
     private static final int PERMISSIONS_WRITE_EXTERNAL_STORAGE = 123;
     ImageView imageViewQuestions;
     int getRandomQuestion;
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeQuestionButton(View view) {
         getRandomSetImage();
+
     }
 
     public void openAnswer(View view) {
@@ -186,5 +188,23 @@ public class MainActivity extends AppCompatActivity {
     private void getRandomSetImage() {
         getRandomQuestion = randomQuestion.nextInt(arrayImageQuestions.length);
         imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
+
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(BUNDLE , getRandomQuestion);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState != null) {
+            getRandomQuestion = savedInstanceState.getInt(BUNDLE);
+            imageViewQuestions.setImageResource(arrayImageQuestions[getRandomQuestion]);
+        }
+    }
+
 }
